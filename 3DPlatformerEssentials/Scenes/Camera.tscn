@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://d0y70ll1udbvv"]
+
+[ext_resource type="Script" path="res://Scripts/Camera.gd" id="1_tdgh0"]
+
+[node name="Camera" type="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.00813, 3.08045)
+script = ExtResource("1_tdgh0")
+
+[node name="FrontRay" type="RayCast3D" parent="."]
+target_position = Vector3(0, 0, -100)
+collision_mask = 128
+hit_from_inside = true
+collide_with_areas = true
+
+[node name="BackRay" type="RayCast3D" parent="."]
+target_position = Vector3(0, 0, 100)
+collision_mask = 128
+
+[node name="RightRay" type="RayCast3D" parent="."]
+target_position = Vector3(100, 0, 0)
+collision_mask = 128
+
+[node name="LeftRay" type="RayCast3D" parent="."]
+target_position = Vector3(-100, 0, 0)
+collision_mask = 128
+
+[node name="DownRay" type="RayCast3D" parent="."]
+target_position = Vector3(0, -100, 0)
+collision_mask = 128

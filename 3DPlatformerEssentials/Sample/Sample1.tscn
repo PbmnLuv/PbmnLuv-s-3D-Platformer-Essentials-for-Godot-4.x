@@ -1,0 +1,81 @@
+[gd_scene load_steps=7 format=3 uid="uid://bc4alpqm3o03g"]
+
+[ext_resource type="PackedScene" uid="uid://gtboq3738uy5" path="res://Scenes/Player.tscn" id="1_0p038"]
+[ext_resource type="Script" path="res://Sample/cam_target.gd" id="2_t7m1j"]
+[ext_resource type="PackedScene" uid="uid://d0y70ll1udbvv" path="res://Scenes/Camera.tscn" id="3_086kv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_goi5n"]
+albedo_color = Color(0.145098, 1, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_v46d5"]
+subdivide_width = 20
+subdivide_height = 20
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ira0t"]
+data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+backface_collision = true
+
+[node name="World" type="Node3D"]
+
+[node name="Blocks" type="Node" parent="."]
+
+[node name="Floor" type="MeshInstance3D" parent="Blocks"]
+transform = Transform3D(33.7098, 0, 0, 0, 0.182507, 0, 0, 0, 33.7098, 0, -1.28288, 0)
+material_override = SubResource("StandardMaterial3D_goi5n")
+mesh = SubResource("BoxMesh_v46d5")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Blocks/Floor"]
+collision_layer = 128
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Blocks/Floor/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ira0t")
+
+[node name="Cube" type="MeshInstance3D" parent="Blocks"]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -10.4267, -1.28288, 0)
+material_override = SubResource("StandardMaterial3D_goi5n")
+mesh = SubResource("BoxMesh_v46d5")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Blocks/Cube"]
+collision_layer = 128
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Blocks/Cube/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ira0t")
+
+[node name="Floor2" type="MeshInstance3D" parent="Blocks"]
+transform = Transform3D(33.7098, 0, 0, 0, 0.16771, 13.2965, 0, -0.0719879, 30.9767, 0, 4.30319, 26.7031)
+material_override = SubResource("StandardMaterial3D_goi5n")
+mesh = SubResource("BoxMesh_v46d5")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Blocks/Floor2"]
+collision_layer = 128
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Blocks/Floor2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ira0t")
+
+[node name="Player" parent="." node_paths=PackedStringArray("Camera") instance=ExtResource("1_0p038")]
+Camera = NodePath("../Camera")
+
+[node name="TargetParent" type="Node" parent="Player"]
+
+[node name="CamTarget" type="Node3D" parent="Player/TargetParent"]
+script = ExtResource("2_t7m1j")
+
+[node name="Camera" parent="." node_paths=PackedStringArray("PlayerNode", "TargetNode") instance=ExtResource("3_086kv")]
+transform = Transform3D(1, 0, 0, 0, 0.977075, 0.212894, 0, -0.212894, 0.977075, 0, 2.5, 5.655)
+PlayerNode = NodePath("../Player")
+TargetNode = NodePath("../Player/TargetParent/CamTarget")
+jumpFollow = 1
+jumpFollowPercentage = 0.7
+manual_rotation_acceleration = 500.0
+automatic_rotation_sensitivity = 0.4
+default_radius = 10.0
+invert_cam_x = true
+invert_cam_y = true
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.477803, 0.878467, 0, -0.878467, 0.477803, 0, 6.18535, 10.1016)
+light_bake_mode = 1
+shadow_enabled = true

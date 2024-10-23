@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://bc4alpqm3o03g"]
+
+[ext_resource type="PackedScene" uid="uid://dv8vxyyt0wqkb" path="res://Scenes/Player.tscn" id="1_qjgik"]
+[ext_resource type="PackedScene" uid="uid://d0y70ll1udbvv" path="res://Scenes/Camera.tscn" id="3_086kv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_goi5n"]
+albedo_color = Color(0.145098, 1, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_v46d5"]
+subdivide_width = 20
+subdivide_height = 20
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ira0t"]
+data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
+[sub_resource type="Environment" id="Environment_ktt6u"]
+ambient_light_source = 2
+ambient_light_color = Color(0.87451, 0.87451, 0.87451, 1)
+reflected_light_source = 2
+
+[node name="World" type="Node3D"]
+
+[node name="Floor" type="MeshInstance3D" parent="."]
+transform = Transform3D(33.7098, 0, 0, 0, 0.182507, 0, 0, 0, 33.7098, 0, -1.28288, 0)
+material_override = SubResource("StandardMaterial3D_goi5n")
+mesh = SubResource("BoxMesh_v46d5")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor"]
+collision_layer = 128
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ira0t")
+
+[node name="Player" parent="." node_paths=PackedStringArray("Camera") instance=ExtResource("1_qjgik")]
+acceleration = 10.0
+gravity = 150.0
+Camera = NodePath("../Camera")
+jump_impulse = 50.0
+
+[node name="Camera" parent="." node_paths=PackedStringArray("PlayerNode") instance=ExtResource("3_086kv")]
+transform = Transform3D(1, 0, 0, 0, 0.977075, 0.212894, 0, -0.212894, 0.977075, 0, 2.5, 5.655)
+PlayerNode = NodePath("../Player")
+type = 1
+manual_rotation_acceleration = 100.0
+default_radius = 7.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ktt6u")
