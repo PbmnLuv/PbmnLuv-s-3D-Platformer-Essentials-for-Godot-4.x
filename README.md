@@ -1,6 +1,13 @@
 # PbmnLuv's 3D Platformer Essentials for Godot 4.x
  A project template for anyone wanting a faster and proper way of handling 3D platformer Camera and Player 
  
+ This project is sample/skeleton project for anyone who wants to make a 3D Platformer in Godot 4.x with ease. All important variables and modes are able to be set on the editor through the inspector!
+
+ HOW TO INSTALL:
+
+    Download and unzip the file. Go to Godot 4.x and import the project file.
+
+ 
  It features:
 
 -> Player Script:
