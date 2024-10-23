@@ -60,8 +60,9 @@ Camera = NodePath("../Camera")
 
 [node name="TargetParent" type="Node" parent="Player"]
 
-[node name="CamTarget" type="Node3D" parent="Player/TargetParent"]
+[node name="CamTarget" type="Node3D" parent="Player/TargetParent" node_paths=PackedStringArray("Camera")]
 script = ExtResource("2_t7m1j")
+Camera = NodePath("../../../Camera")
 
 [node name="Camera" parent="." node_paths=PackedStringArray("PlayerNode", "TargetNode") instance=ExtResource("3_086kv")]
 transform = Transform3D(1, 0, 0, 0, 0.977075, 0.212894, 0, -0.212894, 0.977075, 0, 2.5, 5.655)

@@ -18,7 +18,6 @@ extends CharacterBody3D
 @export var jump_impulse: float = 28.0
 
 enum CoyoteTimeModes {
-	
 	ZERO,
 	TIMING,
 	INFINITE,
