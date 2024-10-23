@@ -11,6 +11,7 @@
  It features:
 
 -> Player Script:
+  - Needs a reference for the Camera.
   - Basic moving scripts, with acceleration, maximum velocity, separate break speed.  
   - Control the number of possible jumps.
   -> 3 different modes for Coyote Time:
