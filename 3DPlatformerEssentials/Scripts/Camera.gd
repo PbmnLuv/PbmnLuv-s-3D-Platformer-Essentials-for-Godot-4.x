@@ -26,7 +26,9 @@ enum JumpFollowTypes {
 @export var jumpFollowPercentage: float = 0.5
 
 
-
+###
+#read the ReadMe for full instructions!!
+###
 @onready var desiredPosition: Vector3 = Vector3(0,2.5,0)
 
 @export var tank_cam_speed: float = 3.0

@@ -1,7 +1,9 @@
 class_name Player
 extends CharacterBody3D
 
-
+###
+#read the ReadMe for full instructions!!
+###
 @export var maxSpeed: float = 15.0
 @export var acceleration: float = 300.0
 @export var breakSpeed: float = 2000.0
@@ -109,8 +111,6 @@ func _updatePlayer(delta):
 			last_temp_vel = temp_vel
 		
 		
-		#action_strength_vec = action_strength_vec.normalized()
-		#if action_strength_vec.length() > analog_limit:
 		analog_limit = action_strength_vec.length()
 		
 		if temp_vel.length() > 0.05:	
@@ -119,16 +119,13 @@ func _updatePlayer(delta):
 				speed = maxSpeed*analog_limit
 				
 			
-			#velocity = Vector3(temp_vel.x*speed, velocity.y, temp_vel.z*speed)
 			velocity = Vector3(temp_vel.x*speed, velocity.y, temp_vel.z*speed)
-			#rotation.y = -Vector2(velocity.x, velocity.z).angle()-PI/2
 			if smooth_turn:
 				desired_rotation_y = -Vector2(velocity.x, velocity.z).angle()-PI/2
 				rotation.y -= 10*angle_difference(desired_rotation_y, rotation.y)*delta
 			else:
 				rotation.y = -Vector2(velocity.x, velocity.z).angle()-PI/2
 		else:
-			#velocity = Vector3(0.0, velocity.y, 0.0)
 			speed -= breakSpeed*delta
 			if speed <= 0:
 				speed = 0.0	
