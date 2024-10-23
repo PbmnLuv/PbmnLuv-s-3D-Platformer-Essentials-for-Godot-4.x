@@ -636,23 +636,11 @@ func update_jump_follow(delta):
 		if PlayerNode.jumpPoint != null:
 			
 			var dif = abs(TargetNode.position.y-PlayerNode.jumpPoint.y)
-			var waterExtraDistMult = 1.0
-			if false: 
-				waterExtraDistMult = 1.8
-			else:
-				waterExtraDistMult = 1.0
+			
 				
 			position = Vector3(TargetNode.global_position.x,self.position.y,TargetNode.global_position.z) + Vector3(sin(horizontal_angle),0,cos(horizontal_angle)).normalized()*default_radius#*waterExtraDistMult
 			
-			
-			if false: #PlayerNode.is_on_water == false:
-				desiredPosition.y = TargetNode.global_position.y+vertical_angle*default_radius - dif*jumpFollowPercentage
-			else:
-				desiredPosition.y = TargetNode.global_position.y+vertical_angle*default_radius
-				if false: #PlayerNode.desiredWaterVertSpeed > 0:
-					desiredPosition.y -= 5.0
-				pass
-			
+			desiredPosition.y = TargetNode.global_position.y+vertical_angle*default_radius
 			
 			look_at_from_position(position, TargetNode.global_position)
 		else:
