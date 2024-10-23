@@ -38,4 +38,5 @@
   - Has Occlusion Detection toggle option:
 	 - Enable or disable the camera to get out of bad situations where the player is occluded by some object (objects in the layer 8)
 
-  
+ 
+-> Press R key to reset the Sample1 scene!
