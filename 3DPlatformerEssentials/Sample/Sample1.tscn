@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://bc4alpqm3o03g"]
 
 [ext_resource type="PackedScene" uid="uid://gtboq3738uy5" path="res://Scenes/Player.tscn" id="1_0p038"]
-[ext_resource type="Script" path="res://Sample/cam_target.gd" id="2_t7m1j"]
+[ext_resource type="Script" path="res://Scripts/cam_target.gd" id="2_t7m1j"]
 [ext_resource type="PackedScene" uid="uid://d0y70ll1udbvv" path="res://Scenes/Camera.tscn" id="3_086kv"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_goi5n"]
