@@ -32,9 +32,6 @@ enum CoyoteTimeModes {
 @onready var temp_vel = Vector3.ZERO
 @onready var last_temp_vel = Vector3.ZERO
 @onready var analog_limit = 0.0
-@onready var isWallJumping = false
-@onready var supposed_speed_x = 0
-@onready var supposed_speed_z = 0
 
 @export var smooth_turn: bool = true
 
@@ -77,7 +74,7 @@ func _updatePlayer(delta):
 		else:
 			velocity = Vector3(0,velocity.y,0)
 		pass
-	elif (Camera.type == 1 or Camera.type == 2 or Camera.type == 3 or Camera.type == 4) and isWallJumping == false:
+	elif (Camera.type == 1 or Camera.type == 2 or Camera.type == 3 or Camera.type == 4):
 		#MANUAL TYPE
 		var right_strength = Input.get_action_strength("RightJoy")
 		var left_strength = Input.get_action_strength("LeftJoy")
@@ -138,10 +135,7 @@ func _updatePlayer(delta):
 	
 	jumpUpdate(delta)
 	
-		#groundPoint = position
-	if isWallJumping == false:
-		supposed_speed_x = velocity.x
-		supposed_speed_z = velocity.z
+	
 		
 	move_and_slide()
 	
@@ -200,7 +194,6 @@ func _updateGravity(delta):
 	if is_on_floor():
 		velocity.y = 0
 		jump_amount = default_jump_amount
-		isWallJumping = false
 		
 		if jumpPoint != null:
 			if jumpPoint.y < position.y + 0.0001 and jumpPoint.y > position.y - 0.0001:

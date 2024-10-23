@@ -61,7 +61,6 @@ enum JumpFollowTypes {
 @onready var vertical_angle: float = 0.5
 
 @export var vertical_adjust_speed: float = 8.0
-@export var water_vertical_adjust_speed: float = 4.5
 
 @onready var toResetCam: bool = false
 @onready var startResetAngle = 0.0
@@ -638,7 +637,7 @@ func update_jump_follow(delta):
 			var dif = abs(TargetNode.position.y-PlayerNode.jumpPoint.y)
 			
 				
-			position = Vector3(TargetNode.global_position.x,self.position.y,TargetNode.global_position.z) + Vector3(sin(horizontal_angle),0,cos(horizontal_angle)).normalized()*default_radius#*waterExtraDistMult
+			position = Vector3(TargetNode.global_position.x,self.position.y,TargetNode.global_position.z) + Vector3(sin(horizontal_angle),0,cos(horizontal_angle)).normalized()*default_radius
 			
 			desiredPosition.y = TargetNode.global_position.y+vertical_angle*default_radius
 			
@@ -666,10 +665,8 @@ func _physics_process(delta):
 			desiredPosition.y = position.y
 			pass
 		else:
-			if false:#if PlayerNode.is_on_water:
-				position.y += dif*delta*water_vertical_adjust_speed#*10
-			else:
-				position.y += dif*delta*vertical_adjust_speed
+			
+			position.y += dif*delta*vertical_adjust_speed
 				
 				
 		#if PlayerNode.is_on_floor():
