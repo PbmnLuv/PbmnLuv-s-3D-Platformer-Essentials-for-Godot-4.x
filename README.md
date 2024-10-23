@@ -17,7 +17,7 @@
   - Control the number of possible jumps.
   -> 3 different modes for Coyote Time:
     - Zero (no coyote time)
-    - Inifinite (inifinite amount of time to perform the jumps)
+    - Inifinite (infinite amount of time to perform the jumps)
     - Timing (perform the jump withing the specified time in milliseconds)
   - Has a Smooth Turn toggle option!
     
