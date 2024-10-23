@@ -41,4 +41,4 @@
  
 -> Press R key to reset the Sample1 scene!
 
--> Input mapping only for Gamepads. You'll need to map the inputs for the desired keyboard controls in the input settings.
+-> Input works only with Gamepads. You'll need to map the inputs for the desired keyboard controls in the input settings.
