@@ -12,6 +12,7 @@
 
 -> Player Script:
   - Needs a reference for the Camera Node.
+  - It needs a CamTarget node child of a Node so the camera follows it smoothly, like in the Sample1 scene. If you want to set an offset, you can by moving the CamTargetFinal node inside the Player scene.
   - Basic moving scripts, with acceleration, maximum velocity, separate break speed.  
   - Control the number of possible jumps.
   -> 3 different modes for Coyote Time:
