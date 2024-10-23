@@ -17,6 +17,7 @@
     - Zero (no coyote time)
     - Inifinite (inifinite amount of time to perform the jumps)
     - Timing (perform the jump withing the specified time in milliseconds)
+  - Has a Smooth Turn toggle option!
     
 -> Camera Script:
   - Needs a reference for the Player Node and Target Node.
