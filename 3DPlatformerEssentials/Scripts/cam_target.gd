@@ -2,7 +2,7 @@ extends Node3D
 
 @onready var TargetFinal = get_parent().get_parent().get_node("CamTargetFinal")
 @onready var PlayerNode = get_parent().get_parent()
-@onready var Camera = get_tree().get_root().get_node("World/Camera")
+@export var Camera : Camera3D
 
 
 
